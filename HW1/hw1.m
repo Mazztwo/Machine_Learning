@@ -76,6 +76,7 @@ y_values = 2.^x_values;
 plot(x_values,y_values)
 
 
+
 % 5.
 % [4 pts] Create two matrices A and B which, when added together, result in 
 % a 10x10 matrix C containing all numbers from 1 to 100. In other words,   
@@ -83,11 +84,33 @@ plot(x_values,y_values)
 % vector containing all numbers from 1 to 100. In code, C = A + B;
 % assert(all(C(:) == (1:100)') == 1); Each matrix should only be created with 
 % a single command (no loops).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 A = reshape(0:99, 10, 10);
 B = ones(10, 10);
 C = A + B;
 assert(all(C(:) == (1:100)') == 1);
 
+
+
+% 6. Generate two random matrices A and B, and compute their product by hand, 
+% using loops. The size of the first matrix should be [5, 3] and of the 
+% second [3, 5]. Check your code by comparing the loop- computed product with 
+% the product that you get from Matlab's A*B. You can use loops.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+A = randi(100,5,3);
+B = randi(100,3,5);
+C = zeros(5,5);
+D = A*B;
+
+for r = 1:size(A,1)
+    for c = 1:size(B,2)
+        C(r,c) = (A(r,1)*B(1,c)) + (A(r,2)*B(2,c)) + (A(r,3)*B(3,c));
+    end
+end
+
+assert(isequal(C,D))
+
+    
 
 
 
