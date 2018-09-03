@@ -47,6 +47,7 @@ total_time = cputime - initial_time;
 disp(['Total time with loop: ', num2str(total_time), ' seconds.'])
 
 
+
 % 3. 
 % Now add 1 to every value in the original random vector, without using a loop. 
 % Time this operation, print the time and write it down. Use a different way to 
@@ -64,6 +65,8 @@ total_time = cputime - initial_time;
 
 fprintf('Total time without loop: %.2f seconds.\n', total_time)
 
+
+
 % 4. 
 % Plot the exponential function 2.^x, for non-negative even values of x smaller 
 % than 100, without using loops.
@@ -71,6 +74,19 @@ fprintf('Total time without loop: %.2f seconds.\n', total_time)
 x_values = 0:2:99;
 y_values = 2.^x_values;
 plot(x_values,y_values)
+
+
+% 5.
+% [4 pts] Create two matrices A and B which, when added together, result in 
+% a 10x10 matrix C containing all numbers from 1 to 100. In other words,   
+% when I add A and B and convert the result to vector form, I should get a 
+% vector containing all numbers from 1 to 100. In code, C = A + B;
+% assert(all(C(:) == (1:100)') == 1); Each matrix should only be created with 
+% a single command (no loops).
+A = reshape(0:99, 10, 10);
+B = ones(10, 10);
+C = A + B;
+assert(all(C(:) == (1:100)') == 1);
 
 
 
