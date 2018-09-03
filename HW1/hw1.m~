@@ -23,24 +23,10 @@ randNums = stdDev.*randn(1000000, 1) + avg;
 statistics = [mean(randNums) std(randNums)];
 
 
-
 % 2. 
 % Add 1 to every value in the previous list, by using a loop. To determine 
 % how many times to loop, use Matlab's size function. Time this operation and 
 % print the number in the code. (Use Matlab's documentation to find out how 
 % to time operations.)
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Get initial cpu time
-initial_time = cputime;
-
-% # size(array, 1) gets number of rows in vector randNums 
-for i = 1:size(randNums, 1)
-    val = randNums(i);
-    randNums(i) = val + 1;
-end
-
-total_time = cputime - initial_time;
-
-
-
