@@ -47,10 +47,11 @@ total_time = cputime - initial_time;
 disp(['Total time with loop: ', num2str(total_time), ' seconds.'])
 
 
-% 3. Now add 1 to every value in the original random vector, without using a loop. 
-% Time this operation, print the time and write it down. Use a different way to print 
-% the number than the method you used above. (See ways to print numbers at the beginning 
-% of the Matlab tutorial script.)
+% 3. 
+% Now add 1 to every value in the original random vector, without using a loop. 
+% Time this operation, print the time and write it down. Use a different way to 
+% print the number than the method you used above. (See ways to print numbers 
+% at the beginning of the Matlab tutorial script.)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Get initial cpu time
@@ -62,4 +63,18 @@ randNums_plus_one_again = 1.+randNums;
 total_time = cputime - initial_time;
 
 fprintf('Total time without loop: %.2f seconds.\n', total_time)
+
+% 4. 
+% Plot the exponential function 2.^x, for non-negative even values of x smaller 
+% than 100, without using loops.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+x_values = 0:2:99;
+y_values = 2.^x_values;
+plot(x_values,y_values)
+
+
+
+
+
+
 
