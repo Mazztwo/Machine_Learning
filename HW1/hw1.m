@@ -41,6 +41,7 @@ for i = 1:size(randNums, 1)
 end
 
 total_time = cputime - initial_time;
-
+loop_display = ['Total time with loop: ', num2str(total_time), ' seconds.'];
+disp(loop_display)
 
 
