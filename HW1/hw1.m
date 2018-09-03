@@ -121,5 +121,29 @@ dotprod3 = A*B';
 
 
 
+% 8.
+% Compute and print the L1-norm and L2-norm for each of the following 
+% two vectors: x1 = [0.5 0 1.5] and x2 = [1 1 0]. Verify your answer 
+% against the Matlab function norm.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+x1 = [0.5 0 1.5];
+l1_x1 = x1(1) + x1(2) + x1(3);
+l2_x1 = sqrt(sum(x1.^2));
+l1_x1_easy = norm(x1,1);
+l2_x1_easy = norm(x1,2);
 
+x2 = [1 1 0];
+l1_x2 = x2(1) + x2(2) + x2(3);
+l2_x2 = sqrt(sum(x2.^2));
+l1_x2_easy = norm(x2,1);
+l2_x2_easy = norm(x2,2);
 
+disp(['L1-norm for vector x1: ', num2str(l1_x1)])
+disp(['L2-norm for vector x1: ', num2str(l2_x1)])
+disp(['L1-norm for vector x2: ', num2str(l1_x2)])
+disp(['L2-norm for vector x2: ', num2str(l2_x2)])
+
+assert(l1_x1 == l1_x1_easy)
+assert(l2_x1 == l2_x1_easy);
+assert(l1_x2 == l1_x2_easy);
+assert(l2_x2 == l2_x2_easy);
