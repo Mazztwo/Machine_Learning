@@ -196,11 +196,16 @@ assert(l2_x2 == l2_x2_easy);
 % 2x + 6y + 8z = 3; 
 % 6x + 8y + 18z = 5;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% x = [], y = [], z = [];
-% equation1 = 2*x + y + 3*z == 1; 
-% equation2 = 2*x + 6*y + 8*z == 3; 
-% equation3 = 6*x + 8*y + 18*z == 5;
 
-% soln = solve([equation1, equation2, equation3], [x, y, z])
+% Put into form AX = B
+% A = matrix of scalar coefficients of variables
+% B = matrix of what equations are equal to
+% X = solutions to variables --> [x;y;z]
+
+A = [2 1 3; 2 6 8; 6 8 18];
+B = [1;3;5];
+X = A\B; % --> --> X = [x;y;z]
+
+
 
 
