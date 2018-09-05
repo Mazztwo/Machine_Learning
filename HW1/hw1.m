@@ -207,5 +207,21 @@ B = [1;3;5];
 X = A\B; % --> --> X = [x;y;z]
 
 
+
+% 10.
+% Call function on a few matricies to make sure it works and that the sum
+% of every row is 1.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 out = normalize_rows([1 2 3 4 4 ; 5 6 4 4 5; 4 4 8 9 8])
+out = normalize_rows([1 2 3 ; 4 4 5; 4 9 8])
+out = normalize_rows([1 2 ; 4 5; 9 8])
+
+
+
+% 11.
+% Test fib()
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+fib2 = fib(2)
+fib4 = fib(4)
+fib6 = fib(6)
 
