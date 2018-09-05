@@ -4,9 +4,9 @@
 % entries in each row should be 1, in the matrix output by your function.
 
 
-function [B] = normalize_rows(A)
+function [outputMatrix] = normalize_rows(inputMatrix)
 
-    B = [zeros(size(A,1),size(A,2)-1) ((A(:,1)*0)+1)]; 
+    outputMatrix = repmat(inputMatrix(:,1)+0, size(inputMatrix,2));
     
 end
 
