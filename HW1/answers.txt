@@ -1,0 +1,55 @@
+
+
+Propose two new problems that can be solved with machine learning. Describe how you would go about solving each.
+
+For each problem, discuss:
+- What features (x) would you use?
+- What would the labels (y) be?
+- How would you collect data?
+- Why might the problem turn out to be challenging?
+
+
+
+Problem 1: 
+One could train a machine learning algorithm to take a portion of a standardized test like the SAT Reading comprehension portion. 
+The algorithm could scan a passage and then answer some questions about it. Let's say each passage has 10 questions, each with 
+choices A,B,C, and D.
+
+Features (x):
+- word counts
+- word weights
+
+Labels (y):
+- an answer to the question (choice A, B, C, or D)
+
+To collect data, one could get passages and answers to the questions about that passage and feed them to the algorithm. 
+
+There could deffinitely be a lot of problems with this. Maybe there are a lot of abstract questions that ask about things
+such as theme and motifs and other things that don't show up in the passages. I could see inference type of questions being
+particularly difficult. The machine would also have to somehow decompose a question and try to garner what it is asking, which
+seems tricky.
+
+
+
+Problem 2:
+One could train a machine learning algorithm to write short stories in the style of some author. Or, one can be generic and have the
+algorithm write a short story in any style. If the algorithm is to mimic a particular author, then it could be trained with only that
+author's writing. If it is to be a generic short story generator, then it can be trained with writing from many different types of writing.
+Or maybe the algorithim could mimic a certain genre of story, like science fiction, or fantasy, and be trained with stories only from those
+genres.
+
+Features (x):
+- word counts
+- word weights 
+- sentence structure/type
+
+Labels (y):
+- a generated sentence or paragraph or the whole story in general
+
+To collect data, one needs access to electronic versions of whatever text they want to train the model with. 
+
+Problems with this would be mainly with the meaning of the sentences that the model generates. It would be tricky to 
+make the model come up with gramatically sound sentences all the time. Further, it would be difficult to make the model
+generate sentences that make any sense at all. But, it would still be fun to see what sorts of stories it could come up with.
+For example, one could feed all of The Lord of the Rings and other works by Tolkien and then have it generate some story
+based on those!

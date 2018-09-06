@@ -225,3 +225,25 @@ fib2 = fib(2)
 fib4 = fib(4)
 fib6 = fib(6)
 
+
+
+% 12. 
+% We have the following training set: a red circle, a blue triangle, a blue 
+% circle, a green triangle, and a red square. Represent each of these samples 
+% as a feature vector, using the same representation scheme/strategy. Write a 
+% comment to explain the meaning of each dimension in your representation, 
+% i.e. what feature it corresponds to, and what the possible values of that feature are.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Possible shapes: circle, triangle, square
+% Possible colors: red, blue, green
+
+% Feature vector = [ color value, shape value ]
+
+% Color value: 1 = red, 2 = blue, 3 = green
+% Shape value: 1 = circle, 2 = triangle, 3 = square 
+
+% Example: 
+% red circle = [1, 1]
+% blue triangle = [2,2]
+% green circle = [3, 1]
