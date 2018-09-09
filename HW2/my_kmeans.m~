@@ -63,15 +63,14 @@ function [ids, means, ssd] = my_kmeans(A, K, iters)
     % which cluster center each data point is closest to. 
     % Calculate the distance each point is from each cluster center
     % [ point1fromcluster1 point1fromcluster2 point1fromcluster3 ...]
-    distances = pdist2(A, means)
-   
-    % initialize ids
-    ids = zeros(size(A,1),1);
+    distances = pdist2(A, means);
+    minIndex = 1;
     
-    for r = 1:size(distances, 1) 
-        [~, ids(r)] = min(distances(r, :));
+    for r = 1:size(distances, 1)
+        for c = 1: size(distances, 2)         
+        end
     end
-    
+
     
     ssd = 0;
 end
