@@ -51,28 +51,76 @@ function [ids, means, ssd] = my_kmeans(A, K, iters)
         end
     end
     
-    
-    % 2. 
-    % Then, iterate over the following two steps. The first 
-    % step is to compute the memberships for each data sample. Use Matlab's 
-    % function pdist2 to efficiently compute distances (check its 
-    % documentation to see what inputs it expects). Then for each sample, 
-    % find the min distance and the cluster that gives this min distance.
-    
-    % Now that I have the cluster centers, I have to figure out
-    % which cluster center each data point is closest to. 
-    % Calculate the distance each point is from each cluster center
-    % [ point1fromcluster1 point1fromcluster2 point1fromcluster3 ...]
-    distances = pdist2(A, means)
-   
-    % initialize ids
-    ids = zeros(size(A,1),1);
-    
-    for r = 1:size(distances, 1) 
-        [~, ids(r)] = min(distances(r, :));
+    for q = 1: iters
+        % 2. 
+        % Then, iterate over the following two steps. The first 
+        % step is to compute the memberships for each data sample. Use Matlab's 
+        % function pdist2 to efficiently compute distances (check its 
+        % documentation to see what inputs it expects). Then for each sample, 
+        % find the min distance and the cluster that gives this min distance.
+
+        % Now that I have the cluster centers, I have to figure out
+        % which cluster center each data point is closest to. 
+        % Calculate the distance each point is from each cluster center
+        % [ point1fromcluster1 point1fromcluster2 point1fromcluster3 ...]
+        distances = pdist2(A, means);
+
+        % initialize ids
+        ids = zeros(size(A,1),1);
+
+        for r = 1:size(distances, 1) 
+            [~, ids(r)] = min(distances(r, :));
+        end
+
+        % 3.
+        % The second step is to recompute the cluster means, simply 
+        % taking the average across samples assigned to that cluster, for each 
+        % feature dimension.
+
+        % Now each point belongs to one of the clusters. I must now take each
+        % cluster and recompute its center by taking the mean of each
+        % dimension.
+
+        % Total number of points belonging to a cluster
+        totalPoints = zeros(K, 1);
+
+        % Holds the temporary sums of each dimension for a cluster
+        sums = zeros(1, D);
+
+        for k = 1 : K
+            for id = 1 : size(ids)
+                if (ids(id) == k)
+
+                    % Get point from A --> A(id, :)
+                    point = A(id, :);
+                    totalPoints(k, 1) = totalPoints(k, 1) + 1;
+
+                    % Add each  dimension to a sum
+                    for d = 1 : D
+                        sums(1,d) = sums(1,d) + point(1,  d);
+                    end
+
+                    % At end, divide each sum by total data in that cluster and
+                    % update the cluster center array (means).
+                    if(totalPoints(k,1) ~= 0)
+                        for d = 1 : D
+                            means(k,d) = sums(1,d) / totalPoints(k,1);
+                        end
+                    end
+
+                end
+            end  
+            % Reset sums
+            sums = zeros(1, D);
+        end 
     end
     
     
-    ssd = 0;
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   % ASK HOW TO IMPLEMENT                   %
+   ssd = 0;                                 %
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   
+   
 end
 
