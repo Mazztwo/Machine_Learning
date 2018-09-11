@@ -2,14 +2,14 @@
 clc
 rawr = [1 2 5 
         2 1 6 
-        3 5 1
-        1 5 2
+        3 1 1
+        1 8 2
         5 4 2
-        1 2 4
         1 4 4
-        9 5 3];
+        1 4 4
+        9 2 3];
 
-[ids, means, ssd] = my_kmeans( rawr, 3, 3);
+[ids, means, ssd] = restarts( rawr, 3, 3, 3);
 
 means
 ids
