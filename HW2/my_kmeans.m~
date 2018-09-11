@@ -134,16 +134,21 @@ function [ids, means, ssd] = my_kmeans(A, K, iters)
                     % Square the magnitude
                     magnitude = magnitude * magnitude;
                     
-                    % Add this to counter
-                    squaredDiff = squaredDiff + magnitude;
+                    % Add this to tally
                 end
             end
-        % Add the sum of cluster to ssd
-        ssd = ssd + squaredDiff;
-        
         % Reset the squared difference
         squaredDiff = 0;
     end
-  
+    
+   
+
+   
+   
+   
+                                  
+   
+   
+   
 end
 
