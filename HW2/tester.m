@@ -11,6 +11,8 @@ rawr = [1 2 5
 
 [ids, means, ssd] = restarts( rawr, 3, 3, 3);
 
-means
-ids
-ssd
+means;
+ids;
+ssd;
+
+segment()

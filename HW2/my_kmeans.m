@@ -52,6 +52,7 @@ function [ids, means, ssd] = my_kmeans(A, K, iters)
     end
     
     for q = 1: iters
+        
         % 2. 
         % Then, iterate over the following two steps. The first 
         % step is to compute the memberships for each data sample. Use Matlab's 
