@@ -41,7 +41,7 @@ pittsburgh_2d = reshape(pittsburgh, 100*100, 3);
 
 % Use the random restarts function you wrote above, to perform clustering 
 % over the pixels of the image.
-[ids_panda, means_panda, ssd_panda] = restarts(panda_2d, 5, 10, 10);
+[ids_panda, means_panda, ssd_panda] = restarts(panda_2d, 15, 15, 15);
 [ids_cardinal, means_cardinal, ssd_cardinal] = restarts(cardinal_2d, 5, 10, 10);
 [ids_pittsburgh, means_pittsburgh, ssd_pittsburgh] = restarts(pittsburgh_2d, 5, 10, 10);
 
