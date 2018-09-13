@@ -52,28 +52,39 @@ pittsburgh_2d = reshape(pittsburgh, 100*100, 3);
 % means). Show the recolored image using imshow, but convert it to format 
 % uint8 before displaying.
 
-%for pixel = 1: size(panda_2d) % panda_2d = (100x100) x 3
-%    for d = 1: size(means_panda,2)
-%        panda_2d(pixel,d) = means_panda(ids_panda(pixel),d);
-%    end
-%end
-
 for row = 1: 100
     for col = 1: 100
+        
+        % Panda image
       	for d = 1: size(means_panda,2)
            panda(row,col,d) =  means_panda(ids_panda(((col-1)*100 + row),1),d);
         end
+        
+        % Cardinal image
+        for d = 1: size(means_cardinal,2)
+           cardinal(row,col,d) =  means_cardinal(ids_cardinal(((col-1)*100 + row),1),d);
+        end
+        
+        % Pittsburgh image
+        for d = 1: size(means_pittsburgh,2)
+           pittsburgh(row,col,d) =  means_pittsburgh(ids_pittsburgh(((col-1)*100 + row),1),d);
+        end
+        
     end
 end
     
 
 
-% Convert image to uint8
+% Convert image to uint8....as per professor's piazza answer, there is no
+% need to convert if image displays fine...
 % panda_2d =  uint8(panda_2d);
 
-% Display image
-imshow(panda);
 
+% UNCOMMENT TO SEE THE DIFFERENT IMAGES....
+% Display images
+imshow(panda);
+% imshow(cardinal);
+% imshow(pittsburgh);
 
 end
 
