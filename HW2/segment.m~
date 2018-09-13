@@ -61,7 +61,8 @@ pittsburgh_2d = reshape(pittsburgh, 100*100, 3);
 for row = 1: 100
     for col = 1: 100
       	for d = 1: size(means_panda,2)
-           panda(row,col,d) =  means_panda(ids_panda(((col-1)*100 + row),1),d);
+            
+           panda(row,col,d) =  means_panda(ids_panda(   ,1),d);
         end
     end
 end

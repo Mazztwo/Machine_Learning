@@ -9,7 +9,7 @@ rawr = [1 2 5
         1 4 4
         9 2 3];
 
-[ids, means, ssd] = restarts( rawr, 3, 3, 3);
+[ids, means, ssd] = restarts( rawr, 3, 5, 50);
 
 means;
 ids;

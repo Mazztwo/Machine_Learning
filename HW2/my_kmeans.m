@@ -130,7 +130,7 @@ function [ids, means, ssd] = my_kmeans(A, K, iters)
                     tempDiff = point - means(k,:);
                     
                     % Take magnitude of the difference
-                    magnitude = norm(tempDiff, 1);
+                    magnitude = norm(tempDiff, 2);
                     
                     % Square the magnitude
                     magnitude = magnitude * magnitude;
