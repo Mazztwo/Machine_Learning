@@ -1,0 +1,12 @@
+
+clc
+
+% First, download the winequality-red.csv file, load it in Matlab 
+% (e.g. using dlmread). 
+Standardize the data, by computing 
+% the mean and standard deviation for each feature dimension using the 
+% train set only, then subtracting the mean and dividing by the stdev for 
+% each feature and each sample. Append a 1 for each feature vector, which 
+% will correspond to the bias that our model learns.
+
+all_data = dlmread("winequality-red.csv", ";", 1, 0);
