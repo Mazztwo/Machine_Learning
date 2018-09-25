@@ -4,7 +4,7 @@
 function [w] = lr_solve_gd(X_train, y_train, iters, eta)
     
     % Add 1's to X_train
-    X_train = [ones(size(X_train,1),1)  X_train];
+    % X_train = [ones(size(X_train,1),1)  X_train];
 
     % 1. First, initialize the weights in some way (use either 
     % random values or all zeros).
