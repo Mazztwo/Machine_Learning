@@ -3,9 +3,6 @@
 
 function [w] = lr_solve_gd(X_train, y_train, iters, eta)
     
-    % Add 1's to X_train
-    % X_train = [ones(size(X_train,1),1)  X_train];
-
     % 1. First, initialize the weights in some way (use either 
     % random values or all zeros).
     w = zeros(1, size(X_train,2));
@@ -19,8 +16,8 @@ function [w] = lr_solve_gd(X_train, y_train, iters, eta)
     for i = 1 : iters
         for row = 1: size(X_train,1)
             y = y_train(row, 1);
-            x = X_train(row,1);
-            y_hat = lr_predict(x, w);
+            x = X_train(row,:);
+            y_hat = lr_predict(x, w');
             y_diff = y - y_hat;
             loss = y_diff * x * eta;
             
