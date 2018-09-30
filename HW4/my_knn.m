@@ -11,7 +11,7 @@
 %
 % Outputs:
 %   an Mx1 predicted label vector y_test for the test instances.
-function [y_test] = knn(X_train,y_train,X_test,k)
+function [y_test] = my_knn(X_train, y_train, X_test, k)
     N = size(X_train,1);
     M = size(X_test,1);
     y_test = zeros(M, 1);
