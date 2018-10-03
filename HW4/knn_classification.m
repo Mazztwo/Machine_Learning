@@ -97,17 +97,21 @@ end
 % results (with values of K on the x-axis and accuracy on the y-axis) and 
 % include the plot in a file report.pdf/docx.
 
-plot(kays,accuracies);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%plot(kays,accuracies);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % 5. So far, we have been weighing neighbors equally. Now we want to 
 % experiment with weighing them according to their distance to the test sample 
 % of interest. Experiment with 3 different values of the bandwidth parameter 
 % ?, create a plot with ? on the x-axis and accuracy on the y-axis, and 
 % include the plot in the report file.
-sigs = 1:5:11;
+sigs = 1:20:41;
 accuracies = [];
 
-for sig = 1:5:11
+
+for sig = 1:20:41
     
     curr_accuracies = zeros(10,1);
     
@@ -151,5 +155,7 @@ for sig = 1:5:11
     accuracies = [accuracies; mean_accuracy];
 end
 
-plot(sigs,accuracies);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%plot(sigs,accuracies);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
