@@ -33,23 +33,31 @@ function [y_test] = weighted_knn(X_train, y_train, X_test, sigma)
         
         
         % Calculate 'weight' of each class
-        classes = unique(y_train);
-        class_weight = zeros(size(classes));
+        classes = []
         
-        for i = 1:N
-            for j = 1:size(classes,1)
-                if ( classes(j) == y_train(i) )
-                    class_weight(j) = class_weight(j) + weighted_distances(i);
+        for i = 1: N
+            if ( size(classes,1) == 0 )
+                classes = [classes; y_train(1,1) weighted_distances(1)];
+            end
+            
+            % look for class in classes array and update its weight
+            for j = 1: size(classes,1)
+                if ( classes(j) == y_train(j)
+                   
                 end
             end
+            
         end
         
         
-        % Pick the highest weighted class 
-        [~, index] = maxk(class_weight,1);
+        
+        
+        
+        % Pick the highest weighted item 
+        [~, index] = maxk(weighted_distances,1);
         
         % Assing most frequent label as y_test
-        y_test(row) = classes(index); 
+        y_test(row) = y_train(index); 
     end    
 
 end
