@@ -8,4 +8,4 @@ k = 2;
 sigma = 3;
 
 [y_test] = my_knn(X_train,y_train,X_test,k)
-[z_test] = weighted_knn(X_train,y_train,X_test,k, sigma)
+[z_test] = weighted_knn(X_train,y_train,X_test, sigma)

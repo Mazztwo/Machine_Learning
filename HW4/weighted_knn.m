@@ -1,7 +1,7 @@
 
 
-function [y_test] = weighted_knn(X_train, y_train, X_test, k, sigma)
- N = size(X_train,1);
+function [y_test] = weighted_knn(X_train, y_train, X_test, sigma)
+    N = size(X_train,1);
     M = size(X_test,1);
     y_test = zeros(M, 1);
     
@@ -18,24 +18,24 @@ function [y_test] = weighted_knn(X_train, y_train, X_test, k, sigma)
         end
         
         % weigh all samples
-        weights = size(distances);
+        weights = zeros(size(distances));
         
         for i = 1: N
             weights(i) = exp( -1*(distances(i)*distances(i)) / (sigma*sigma) );
         end
         
-        
-        % Pick the k weights that are the highest
-        [~, indicies] = maxk(weights,k);
-        
-        % Get the label that occurs most in the k - weightiest 
-        k_labels = zeros(k, 1);
-        for j = 1:k
-            k_labels(j) = y_train(indicies(j));
+        weighted_distances = zeros(size(distances));
+        % Multiply the distances by the weights
+        for i = 1:N
+            weighted_distances(i) = weights(i) * distances(i);
         end
         
-        % assing most frequent label as y_test
-        y_test(row) = mode(k_labels); 
+        
+        % Pick the highest weighted item 
+        [~, index] = maxk(weighted_distances,1);
+        
+        % Assing most frequent label as y_test
+        y_test(row) = y_train(index); 
     end    
 
 end
