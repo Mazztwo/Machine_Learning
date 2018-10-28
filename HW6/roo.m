@@ -6,4 +6,4 @@ Y_train = [1;1;0;1;0];
 X_test = [1 2 2 6; 5 2 7 3; 1 9 3 3];
 C = 0.01;
 
-y_pred = svm_quadprog(X_train, Y_train, X_test, C);
+y_pred = svm_quadprog(X_train, Y_train, X_test, C)

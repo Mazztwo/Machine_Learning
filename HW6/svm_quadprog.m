@@ -34,13 +34,35 @@ function [y_pred] = svm_quadprog(X_train, Y_train, X_test, C)
     
     
     % Calculate weight vector
-    w = zeros(len,1)
+    w = zeros(1, len);
     
     for i = 1: len
-        w(i,1) = 
+        rawr = (alphas(i) * Y_train(i));
+        % Add bias to curr sample
+        curr = [X_train(i, :) 1];
+        % Get temp weight
+        w_temp = rawr * curr;
+        w =  w + w_temp;
     end
     
-    y_pred = 16;
+    % Extract bias from weight
+    bias = w(1,end);
+    w = w(1,1:end-1);
+    
+    % Use bias and weight to predict y 
+    % y_pred = sign (w dot x + b)
+    y_pred = zeros(len,1);
+    
+    for i = 1: size(X_test,1)
+        
+        temp = dot(w, X_test(i,:)) + bias;
+        if (temp < 0)
+            y_pred(i) = -1;
+        else
+            y_pred(i) = 1;
+        end
+    end
+    
 end
 
 
