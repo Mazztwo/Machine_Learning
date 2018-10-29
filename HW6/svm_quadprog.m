@@ -34,7 +34,7 @@ function [y_pred] = svm_quadprog(X_train, Y_train, X_test, C)
     
     
     % Calculate weight vector
-    w = zeros(1, len);
+    w = zeros(1, size(X_train,2) + 1);
     
     for i = 1: len
         rawr = (alphas(i) * Y_train(i));
