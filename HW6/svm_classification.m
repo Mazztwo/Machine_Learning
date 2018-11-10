@@ -97,7 +97,7 @@ end
 % results (with values of C on the x-axis and accuracy on the y-axis) and 
 % include the plot in a file report.pdf/docx.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-plot(C,accuracies*215);
+plot(C,accuracies*2.15);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
