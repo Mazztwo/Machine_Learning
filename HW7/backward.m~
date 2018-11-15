@@ -55,12 +55,8 @@ function [W1, W2, error_over_time] = backward(X, y, M, iters, eta)
         % update W1
         for h = 1:M
             zj = Z(ind,h);
-            w = W1(h);
-            delta_col = delta.* ones(M,1);
-            summation = w * delta_col;
-            delta = zj * (1 - zj) * summation;
-            err2 = sample * delta;
-            W1(j) = W1(j) - (eta * err2);
+            w = W1(h)
+            delta = zj * (1 - zj) * 
         end
         
         error_over_time(i) = err;

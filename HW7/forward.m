@@ -25,7 +25,11 @@ function [y_pred, Z] = forward(X, W1, W2)
     end
    
     % Compute activations
-    activations = X * W1';
+    activations = zeros(D,1);
+    
+    for neuron = 1:M
+        activations(neuron) = X*W1(neuron)';
+    end
     
     % Apply tanh function to each activation
     Z = tanh(activations);
