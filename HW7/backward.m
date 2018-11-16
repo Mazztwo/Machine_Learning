@@ -35,35 +35,35 @@ function [W1, W2, error_over_time] = backward(X, y, M, iters, eta)
     %   then backpropagate to the hidden layer
     %   update the weights with the resulting error.
     for i = 1: iters
-        ind = randi(len, q);
-        sample = X(ind);
+        ind = randi(len, 1);
+        sample = X(ind, :);
         
         % Call activation computation function
         [y_pred, Z] = forward(sample, W1, W2);
         
         % delta = yk (1-yk) (yk-tk)
-        yk = y_pred(ind);
+        yk = y_pred;
         tk = y(ind);
-        delta = yk * (1 - yk) * (yk - tk);
+        delta_y = yk * (1 - yk) * (yk - tk);
+        
+        % Compute error
+        error_over_time(i) = abs(y_pred - y(ind));
+        
         
         % update W2
         for j = 1:M
-            err = delta * Z(ind,j);
+            err = delta_y * Z(j);
             W2(j) = W2(j) - (eta * err);
         end
         
         % update W1
         for h = 1:M
-            zj = Z(ind,h);
-            w = W1(h);
-            delta_col = delta.* ones(M,1);
-            summation = w * delta_col;
-            delta = zj * (1 - zj) * summation;
-            err2 = sample * delta;
-            W1(j) = W1(j) - (eta * err2);
+           zj = Z(h);
+           delta_z = zj * (1-zj) * (W2(1,h)*delta_y);
+           curr_w = W1(h,:);
+           W1(h,:) = curr_w - (eta * delta_z * sample);
         end
         
-        error_over_time(i) = err;
     end
 
 end

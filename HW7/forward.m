@@ -15,20 +15,27 @@ function [y_pred, Z] = forward(X, W1, W2)
     M = 30;
     
     % Number of rows in training set
-    len = size(X,1);
-       
+    N = size(X,1);
+           
     % Standardize data
     means = mean(X);
     std_devs = std(X);
-    for sample = 1:size(len,1)
+    for sample = 1:N
         X(sample, :) = (X(sample, :) - means) ./ std_devs; 
     end
    
     % Compute activations
-    activations = zeros(D,1);
+    activations = zeros(N,M);
     
-    for neuron = 1:M
-        activations(neuron) = X*W1(neuron)';
+    for i = 1:N
+        for neuron = 1:M
+            curr_sample = X(i,:);
+            if (size(curr_sample, 2) == 12)
+                curr_sample = curr_sample(:,1:end-1);
+            end
+            
+            activations(i,neuron) = curr_sample * W1(neuron,:)';
+        end
     end
     
     % Apply tanh function to each activation
