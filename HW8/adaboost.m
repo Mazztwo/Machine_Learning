@@ -11,27 +11,28 @@ function [y_pred_final] = adaboost(X_train,y_train_,X_test,iters)
 
     % 1. Initialize all weights to 1/N. 
     N = size(X_train, 1);
+    M = size(X_test,1);
     weights = repmat(1/N, N, 1);
 
     alphas = zeros(iters,1);
-    y_preds = zeros(iters,1);
+    y_preds = zeros(76,iters);
     
     % Then iterate:
     for i = 1:iters
         
         % 2. Find the best decision stump, and evaluate the 
-        % quantities ? and ?.
-        correct_train, y_pred = decision_stump_set(X_train, y_train_, w_train, X_test);
+        % quantities alpha and epsilon.
+        [correct_train, y_preds(:,i)] = decision_stump_set(X_train, y_train_, weights, X_test);
         
         top = 0;
         
         for j = 1:N
 
-            % When y != ground truth, indicator = 1, 0 otherwise
+            % When y == ground truth, indicator = 1, 0 otherwise
             if ( correct_train(j) == 0 )
-                indicator = 1;
-            else
                 indicator = 0;
+            else
+                indicator = 1;
             end
             
             top = top + weights(j)*indicator;
@@ -40,13 +41,15 @@ function [y_pred_final] = adaboost(X_train,y_train_,X_test,iters)
         
         epsilon = top / sum(weights);
       
-        alpha = Math.log(((1 - epsilon) / epsilon));
+        alpha = log(((1 - epsilon) / epsilon));
         
-        % If some classifier produces an ? value less than 0, set the 
+        % If some classifier produces an alpha value less than 0, set the 
         % latter to 0 (which effectively discards this classifier) and 
         % exit the iteration loop
         if ( alpha >= 0 )
             alphas(i) = alpha;
+        else
+            alphas(i) = 0;
             continue
         end
        
@@ -56,12 +59,12 @@ function [y_pred_final] = adaboost(X_train,y_train_,X_test,iters)
             
             % When y != ground truth, indicator = 1, 0 otherwise
             if ( correct_train(k) == 0 )
-                indicator = 1;
-            else
                 indicator = 0;
+            else
+                indicator = 1;
             end
             
-            weights(i) = weight(i) * exp(alphas(i) * indicator);
+            weights(i) = weights(i) * exp(alphas(i) * indicator);
         end
         
         % Normalize the weights
@@ -77,11 +80,16 @@ function [y_pred_final] = adaboost(X_train,y_train_,X_test,iters)
     
     % 4. Compute the final labels on the test set, using all 
     % classifiers (one per iteration).
-    y_pred_final = sign(alphas .* y_preds);
+    y_pred_final = zeros(M,1);
+    
+    
+    for q = 1:M
+        y_pred_final(q) = sign( sum(y_preds(q,:) * alphas) );
+    end
     
     % Convert -1 to 0s
     for z = 1:iters
-        if (y_pred_final(z) == -1)
+        if (y_pred_final(z) == -1 || isnan(y_pred_final(z)) )
             y_pred_final(z) = 0;
         end
     end

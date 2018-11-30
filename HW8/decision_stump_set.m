@@ -40,17 +40,17 @@ function [correct_train, y_pred] = decision_stump_set(X_train, y_train, w_train,
     correct_train = zeros(N,1);
     
     % Current best stump
-    % Feature | Threshold | -1 or 1 | weighted_accuracy
-    % Initialize best stump to zeros
-    best_stump = zeros(1, 4);
-    
+    best_stump = 0;
     % Go through this for each feature dimension
     for dim = 1:D
         
         curr_dim = X_train(:, dim);
         
+        mx = max(curr_dim);
+        mn = min(curr_dim);
+        
         % Create threshold increment for curr feature
-        threshold_increment = max(curr_dim) - min(curr_dim) / 10;
+        threshold_increment = (mx - mn) / 10;
         
         % Create all stumps for this current feature and 
         % check against best stump.
@@ -106,14 +106,19 @@ function [correct_train, y_pred] = decision_stump_set(X_train, y_train, w_train,
                
                % If the current accuracy is greater than the best we've
                % seen so far, then update the best stump to this one
-               if ( curr_weighted_acc > best_stump(4) )
-                   best_stump = [curr_dim, threshhold, curr_label, curr_weighted_acc];
+               
+               if ( best_stump == 0)
+                   best_stump = [dim, threshold, curr_label, curr_weighted_acc];
+               elseif ( curr_weighted_acc > best_stump(4) )
+                   best_stump = [dim, threshold, curr_label, curr_weighted_acc];
                end
+           
+               
                 
             end
             
             % Update Threshold
-            curr_increment = curr_increment + threshold_increment;
+            threshold = threshold + threshold_increment;
         end
         
     end
@@ -132,7 +137,7 @@ function [correct_train, y_pred] = decision_stump_set(X_train, y_train, w_train,
         dimension = best_stump(1);
         threshold = best_stump(2);
         label = best_stump(3);
-        
+             
         if ( X_test(i,dimension) >= threshold)
             if ( label == 1 ) 
                 y_pred(i) = 1;
