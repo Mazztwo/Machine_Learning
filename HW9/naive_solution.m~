@@ -1,0 +1,37 @@
+
+% Inputs:
+% the transition matrix A (from hmm_starter.m),
+% the observation matrix B (from hmm_starter.m),
+% N, the number of states,
+% M, the number of words in the vocabulary, and
+% sent, a vector of integers representing the sentence whose observation probability we want to compute.
+% 
+% Outputs:
+% prob, the probability of observing the input sentence.
+
+
+
+function [prob] = naive_solution(A,B,N,M,sent)
+    % Using two input variables V and N, M = PERMN(V,N) returns all
+    % permutations of N elements taken from the vector V, with repetitions.
+    
+    prob = 0;
+        
+    % The number of words in the sentence + the start state
+    num_states = size(sent,2) + 1;
+    
+    
+    sequences = permn(A, num_states);
+    
+    % Consider all possible state sequences of length of sentence sent
+    for s = sequences
+        
+        % Compute probability of a given state sequence from A
+        prob
+        
+    end
+    
+   
+end 
+
+
