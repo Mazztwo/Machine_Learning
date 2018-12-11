@@ -38,29 +38,19 @@ end
 % s1 = john saw the cat
 % s2 = john ate
 % s3= john saw mary
-% s4 = mary saw john
+% s4 = cat saw the john
 % s5 = john ate the cat
 
 s1 = [1 4 7 3];
 s2 = [1 5];
 s3 = [1 4 2];
-s4 = [2 4 1];
+s4 = [3 4 7 1];
 s5 = [1 5 7 3];
 
-prob1 = naive_solution(A,B,N,M,s1);
-prob2 = naive_solution(A,B,N,M,s2);
-prob3 = naive_solution(A,B,N,M,s3);
-prob4 = naive_solution(A,B,N,M,s4);
-prob5 = naive_solution(A,B,N,M,s5);
-
-
-
-
-
-
-
-
-
-
+prob1 = naive_solution(A,B,N,M,s1)
+prob2 = naive_solution(A,B,N,M,s2)
+prob3 = naive_solution(A,B,N,M,s3)
+prob4 = naive_solution(A,B,N,M,s4)
+prob5 = naive_solution(A,B,N,M,s5)
 
 
